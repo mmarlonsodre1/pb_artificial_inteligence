@@ -1,0 +1,2 @@
+O projeto visa utilizar uma tabela já existente no kaggle.com pelo link https://www.kaggle.com/nilsnoreyson/touch-sensor-events
+Onde utilizarei essa tabela para abrir e fechar a porta de um carro quando o usuário dar um duplo clique no sensor, e abaixar o subir os vidros quando o usuário arrastar para direita ou esquerda.
