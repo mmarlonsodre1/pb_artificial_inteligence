@@ -22,6 +22,6 @@ Rodar projeto:
 
 docker build . -t sensoraws
 docker run -it sensoraws /bin/bash
-python3 code/operationalization/send_data_to_aws_in.py
+python3 code/operationalization/send_data_to_aws.py
 
 21/02/2022
