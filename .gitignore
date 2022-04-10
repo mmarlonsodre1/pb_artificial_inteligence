@@ -1,2 +1,5 @@
-data/processed/data_processed.csv
-data/processed/
+data/processed/touch_events.csv
+data/modeling/data_model.csv
+*/.DS_Store
+.DS_Store
+/.idea

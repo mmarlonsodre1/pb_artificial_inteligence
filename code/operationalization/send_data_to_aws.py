@@ -1,4 +1,4 @@
-from awscrt import io, mqtt, auth, http
+from awscrt import io, mqtt
 from awsiot import mqtt_connection_builder
 from csv import reader
 from time import sleep
@@ -6,7 +6,6 @@ import json
 
 ENDPOINT = "a192g7v0ycd7p2-ats.iot.us-east-1.amazonaws.com"
 CLIENT_ID = "touch"
-# USER_PATH = '/Users/marlonsodre/Desktop/Develop.nosync/Python/pb_artificial_inteligence'
 PATH_TO_CERTIFICATE = "./code/operationalization/certs/touch_cert.pem.crt"
 PATH_TO_PRIVATE_KEY = "./code/operationalization/certs/touch_private.pem.key"
 PATH_TO_AMAZON_ROOT_CA_1 = "./code/operationalization/certs/touch_ca.pem"
@@ -37,28 +36,26 @@ def reader_in_csv():
         now_csv = reader(read_obj)
         header = next(now_csv)
         if header != None:
+            row_list = []
             for row in now_csv:
-                print(int(row[1]))
-                content = int(row[1])
-                sleep(1)
-                return content
+                row_list.append([str(row[0]), int(row[1])])
+            return row_list
         return 'Exception Here!'
 
 def publish_aws(mqtt_connection):
     data = reader_in_csv()
     if data:
-        message = {"topic": data}
-        print("Sending message to AWS: {}".format(data))
-        mqtt_connection.publish(topic=TOPIC,
-                                payload=json.dumps(message),
-                                qos=mqtt.QoS.AT_LEAST_ONCE
-        )
-        sleep(.1)
+        for row in data:
+            message = {"topic": row[1], 'ds': row[0]}
+            print("Sending message to AWS: {}".format(message))
+            mqtt_connection.publish(topic=TOPIC,
+                                    payload=json.dumps(message),
+                                    qos=mqtt.QoS.AT_LEAST_ONCE
+            )
+            sleep(6)
     disconnect_future = mqtt_connection.disconnect()
     disconnect_future.result
 
 if __name__ == "__main__":
-    while True:
-        mqtt_connection, connection = aws_mqtt()
-        publish_aws(mqtt_connection)
-        sleep(1)
+    mqtt_connection, connection = aws_mqtt()
+    publish_aws(mqtt_connection)

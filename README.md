@@ -1,4 +1,4 @@
-# pb_artificial_inteligence
+# pb_iot
 Projeto educacional  para estudos
 
 Estrutura do projeto:
@@ -17,11 +17,21 @@ Estrutura do projeto:
 		- operatinalization
 
 Rodar projeto:
-	Atualmente existe apenas um script no dataprep feito para preparar o dado bruto e transformar em um novo csv.
+* docker build . -t sensoraws
+* docker run -it sensoraws /bin/bash
 
 
-docker build . -t sensoraws
-docker run -it sensoraws /bin/bash
-python3 code/operationalization/send_data_to_aws.py
+* Preparação dos dados:
+  - python3 code/dataprep/prep.py
 
-21/02/2022
+
+* Envio dos dados para a AWS
+	- python3 code/operationalization/send_data_to_aws.py
+
+
+* Envio dos dados para a sombra/shadow da coisa:
+	- python3 code/operationalization/publish_shadow_data_to_aws.py
+
+
+* Recebimento dos dados pelo sombra/shadow da coisa:	
+	- python3 code/operationalization/subscribe_shadow_data_to_aws.py

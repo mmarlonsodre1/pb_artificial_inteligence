@@ -1,8 +1,16 @@
-O touch_events.csv vem com 3 tabelas já completas de dados (doc_created_utc_milli, event, class), porém só irei utilizar duas:
+O `data/raw/touch_events.csv` vem com 3 tabelas já completas de dados (doc_created_utc_milli, event, class), porém só irei utilizar duas (doc_created_utc_milli e class):
 
-doc_created_utc_milli -> data e horário do evento.
+* doc_created_utc_milli -> data e horário do evento. (String)
+* event -> Lista de Eventos (List<Float>)
+* class -> tipo de evento : (Int)
+	- Interruptor 1 = 0
+	- Interruptor 2 = 1
+	- Interruptor 3 = 2
 
-class -> tipo de evento :
-	arrastar para direita = "0"
-	arrastar para esquerda = "1"
-	duplo click = "2"
+Após o preparo dados dados fica:
+* time -> data e horário do evento. (String)
+* class -> Tipo de evento
+
+Após o envio dados para a aws fica:
+* ds -> data e horário do evento. (String)
+* y -> Tipo de evento
