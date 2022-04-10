@@ -15,6 +15,7 @@ Estrutura do projeto:
 		- dataprep
 		- model
 		- operatinalization
+	assets:
 
 Rodar projeto:
 * docker build . -t sensoraws
