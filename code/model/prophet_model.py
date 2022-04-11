@@ -22,9 +22,6 @@ m = Prophet()
 m.fit(train)
 forecast = m.predict(test)
 
-r2 = r2_score(test['y'], forecast['yhat'])
-print(r2)
-
 test.drop(['ds'], axis=1, inplace=True)
 train.drop(['ds'], axis=1, inplace=True)
 test['yhat'] = forecast.yhat.values
