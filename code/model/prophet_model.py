@@ -6,7 +6,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 torch.pi = math.pi
-df = pd.read_csv('/Users/marlonsodre/Desktop/Develop.nosync/Python/pb_artificial_inteligence/data/modeling/data_model.csv')
+df = pd.read_csv('./data/modeling/data_model.csv')
 
 df['ds'] = pd.to_datetime(df.ds)
 df.set_index(df.ds.values, inplace=True)

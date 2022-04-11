@@ -5,7 +5,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 df = pd.read_csv(
-    '/Users/marlonsodre/Desktop/Develop.nosync/Python/pb_artificial_inteligence/data/modeling/data_model.csv'
+    './data/modeling/data_model.csv'
 )
 
 df['ds'] = pd.to_datetime(df.ds)
