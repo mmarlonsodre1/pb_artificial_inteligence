@@ -1,5 +1,6 @@
 # pb_iot
-Projeto educacional  para estudos
+Projeto educacional  para estudos.
+O projeto consiste em utilizar dados de um sensor para ativar ou desativar disjuntores inteligentes.
 
 Estrutura do projeto:
 
