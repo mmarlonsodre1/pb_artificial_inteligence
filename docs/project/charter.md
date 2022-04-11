@@ -21,3 +21,19 @@ Etapas do processo:
 * Envio dos dados para a AWS
 * Envio e recebimento dos dados para a sombra/shadow da coisa
 * Atualizar o estado da coisa a partir do recimento dos dados da AWS.
+
+## Arquitetura
+* Dado:
+    - touch_events.csv 
+
+* Tratativa:
+    - Leitura do csv e envio dos dados para a AWS
+    - Utilização dos dados na aws para predição e mudança de estado da `coisa`
+
+* Serviços e Ferramentas
+    - AWS para utilização dos serviços de IoT
+    - Prophet para predição
+    - Auto Arima para predição
+
+## Diagrama da solução
+![plot](../../assets/diagrama.png)

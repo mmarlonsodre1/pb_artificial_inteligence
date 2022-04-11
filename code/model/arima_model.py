@@ -1,6 +1,8 @@
 from pmdarima import auto_arima
 import pandas as pd
 from pmdarima.arima.stationarity import ADFTest
+import numpy as np
+from matplotlib import pyplot as plt
 
 df = pd.read_csv(
     '/Users/marlonsodre/Desktop/Develop.nosync/Python/pb_artificial_inteligence/data/modeling/data_model.csv'
@@ -15,8 +17,12 @@ df.drop(['topic', '__dt', 'ds'], axis=1, inplace=True)
 adf = ADFTest()
 print(adf.is_stationary(df))
 
+size_of_train = int(np.ceil(df.shape[0] * 0.75))
+train = df.iloc[:size_of_train]
+test = df.iloc[size_of_train:]
+
 model = auto_arima(
-    df,
+    train,
     start_p=1,
     start_q=1,
     max_p=8,
@@ -29,6 +35,16 @@ model = auto_arima(
     random_state=20,
     n_fits=30
 )
-model.fit(df)
-forecast = model.predict(n_periods=30)
-print(forecast)
+
+model.fit(train)
+forecast = model.predict(n_periods=len(test))
+forecast = pd.Series(forecast, index=test.index)
+
+fig, ax = plt.subplots(1, 1, figsize=(20, 6))
+train.plot(ax=ax)
+test.plot(ax=ax, c="g")
+forecast.plot(ax=ax, c="r", ls=":")
+
+ax.yaxis.grid(True)
+ax.legend(["Treino", "Teste", "Predição"])
+plt.show()

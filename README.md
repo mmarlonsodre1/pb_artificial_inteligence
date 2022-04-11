@@ -17,6 +17,8 @@ Estrutura do projeto:
 		- operatinalization
 	assets:
 
+![plot](assets/diagrama.png)
+
 Rodar projeto:
 * docker build . -t sensoraws
 * docker run -it sensoraws /bin/bash
