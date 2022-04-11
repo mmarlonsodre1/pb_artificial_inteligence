@@ -36,5 +36,5 @@ Rodar projeto:
 	- python3 code/operationalization/publish_shadow_data_to_aws.py
 
 
-* Recebimento dos dados pelo sombra/shadow da coisa:	
+* Recebimento dos dados pela sombra/shadow da coisa:	
 	- python3 code/operationalization/subscribe_shadow_data_to_aws.py
